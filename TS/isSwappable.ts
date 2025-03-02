@@ -1,5 +1,5 @@
 function areAlmostEqual(s1: string, s2: string): boolean {
-    let s1Splitted: string[] = s1.split(".");
+    let s1Splitted: string[] = s1.split("");
     let s2Splitted: string[] = s2.split("");
     let difCharsIndicesArr: number[] = [];
     let isSwappable: boolean = false;
