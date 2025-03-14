@@ -1,40 +1,23 @@
 function strStr(haystack: string, needle: string): number {
-    const haystackSplitted: string[] = haystack.split("");
-    const needleSplitted: string[] = needle.split("");
-    let longest: number =
-        needleSplitted.length > haystackSplitted.length ? needleSplitted.length : haystackSplitted.length;
-    let shortest: number =
-        needleSplitted.length < haystackSplitted.length ? needleSplitted.length : haystackSplitted.length;
-    let occurence: number[] = [];
-    let countOfSameChars: number = 0;
-    loop1: for (let i = 0; i < longest; i++) {
-        if (haystackSplitted[i] == needleSplitted[i]) {
-            occurence.push(i);
-            countOfSameChars++;
-            console.log(occurence);
-            console.log(countOfSameChars);
-            if (countOfSameChars == shortest) {
-                continue loop1;
+    let result: number  = -1;
+    let countOfSameChars = 0;
+    if (haystack.length >= needle.length) {
+            for (let i = 0; i < haystack.length; i++) {
+                if(haystack[i] === needle[countOfSameChars]) {
+                    countOfSameChars++
+                } else {
+                    i -= countOfSameChars;
+                    countOfSameChars = 0;
+                }
+                if(countOfSameChars === needle.length) {
+                    result = i - (countOfSameChars - 1);
+                    break
+                }
             }
-        } //else countOfSameChars = 0;
     }
-    // if (countOfSameChars == shortest) {
-    //     return occurence[0];
-    // } else return -1;'
-    return -1;
+    return result;
 }
-console.log(strStr("12sadbutsad", "sad"));
-// let strStr = (haystack: string, needle: string): number => {
-//     const haystackSplitted: string[] = haystack.split("");
-//     const needleSplitted: string[] = needle.split("");
-//     let arrOfSameChars: number[] = [];
-//     for (let i = 0; i < haystackSplitted.length || i < needleSplitted.length; i++) {
-//         if (haystackSplitted[i] == needleSplitted[i]) {
-//             arrOfSameChars.push(i);
-//             console.log(arrOfSameChars);
-//         }
-//     }
-//     return -1;
-// };
-// strStr("11leetcode", "leetc");
-//firstOccurence
+console.log(strStr("aabaabbbaabbbbabaaab", "abaa"));
+
+//      cd LeetCode/TS
+//      tsc firstOccurencex
