@@ -35,3 +35,7 @@ secNode.next = new ListNode(5);
 firstNode.next = secNode;
 firstNodeN.next = secNodeN;
 console.log(addTwoNumbers(firstNode, firstNodeN));
+
+let arr = [0, 1, 2];
+arr[-1] = 1;
+console.log(arr);

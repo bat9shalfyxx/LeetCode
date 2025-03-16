@@ -5,23 +5,31 @@ let searchInsert = (nums: number[], target: number): number => {
     } else {
         let end = nums.length - 1;
         let start = 0;
-        if (target > nums[nums.length]) {
+
+        if (target > nums[end]) {
             index = nums.length;
             return index;
         }
-        if (target < nums[0]) {
-            return 0;
+
+        if (target < nums[start]) {
+            return start;
         }
-        while (start <= end) {
-            let mid = Math.floor((start + end) / 2);
-            if (nums[mid] < target) {
-                end = mid - 1;
-            } else if (nums[end] > target && nums[start] < target) {
+
+        if (nums.length >= 2) {
+            while (start <= end) {
+                let mid = Math.floor((start + end) / 2);
+                if (nums[mid] > target) {
+                    end = mid - 1;
+                } else start = mid + 1;
+            }
+
+            if (nums[start] < target) {
                 index = start + 1;
+                console.log("1");
                 return index;
-            } else start = mid + 1;
+            }
+            index = start;
         }
-        index = end;
     }
     return index;
 };
