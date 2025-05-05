@@ -3,5 +3,5 @@ async function sleep(millis) {
         setTimeout(() => resolve(), millis);
     });
 
-    let result = await promise;
+    await promise;
 }
